@@ -25,7 +25,17 @@ class HalamanKeranjang extends StatelessWidget {
               itemCount: value.item.length,
               itemBuilder: (context, index) {
                 var data = value.item[index];
-                return Card(child: ListTile(title: Text(data.name)));
+                return Card(
+                  child: ListTile(
+                    title: Text(data.name),
+                    trailing: IconButton(
+                      onPressed: () {
+                        value.remove(index);
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
+                  ),
+                );
               },
             );
           }

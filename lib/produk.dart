@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Product {
-  String? name;
+  String name;
 
   Product(this.name);
 }
@@ -14,6 +14,11 @@ class Keranjang with ChangeNotifier {
 
   void inc(Product p) {
     _items.add(p);
+    notifyListeners();
+  }
+
+  void remove(int index) {
+    _items.removeAt(index);
     notifyListeners();
   }
 }

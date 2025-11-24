@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pertemuan7/halamanKeranjang.dart';
 import 'package:pertemuan7/produk.dart';
-
+import 'package:provider/provider.dart';
 
 class HalamanBelanja extends StatelessWidget {
   const HalamanBelanja({super.key});
@@ -50,10 +50,13 @@ class HalamanBelanja extends StatelessWidget {
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              title: Text(product[index].name!),
+              title: Text(product[index].name),
               trailing: IconButton(
                 onPressed: () {
-                  Provider.of(context, listen: false).inc(product[index]);
+                  Provider.of<Keranjang>(
+                    context,
+                    listen: false,
+                  ).inc(product[index]);
                 },
                 icon: Icon(Icons.shopping_cart_checkout_sharp),
               ),
